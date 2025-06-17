@@ -4,10 +4,22 @@ package auth;
 
 option go_package = "sso.v1;ssov1";
 
+import "google/api/annotations.proto";
+
 // description handlers of auth services
 service Auth {
-    rpc Register (RegisterRequest) returns (RegisterResponse);
-    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Register (RegisterRequest) returns (RegisterResponse) {
+        option (google.api.http) = {
+            post: "/v1/registrate"
+            body: "*"
+        };
+    }
+    rpc Login (LoginRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/v1/login"
+            body: "*"
+        };
+    }
 }
 
 message RegisterRequest {
