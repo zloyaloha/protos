@@ -238,7 +238,7 @@ func (x *LoginResponse) GetToken() string {
 	return ""
 }
 
-type IsAdminRequest struct {
+type GetRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -246,20 +246,20 @@ type IsAdminRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IsAdminRequest) Reset() {
-	*x = IsAdminRequest{}
+func (x *GetRoleRequest) Reset() {
+	*x = GetRoleRequest{}
 	mi := &file_sso_sso_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *IsAdminRequest) String() string {
+func (x *GetRoleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*IsAdminRequest) ProtoMessage() {}
+func (*GetRoleRequest) ProtoMessage() {}
 
-func (x *IsAdminRequest) ProtoReflect() protoreflect.Message {
+func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -271,46 +271,46 @@ func (x *IsAdminRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use IsAdminRequest.ProtoReflect.Descriptor instead.
-func (*IsAdminRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRoleRequest.ProtoReflect.Descriptor instead.
+func (*GetRoleRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *IsAdminRequest) GetToken() string {
+func (x *GetRoleRequest) GetToken() string {
 	if x != nil {
 		return x.Token
 	}
 	return ""
 }
 
-func (x *IsAdminRequest) GetUserId() string {
+func (x *GetRoleRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
 	return ""
 }
 
-type IsAdminResponse struct {
+type GetRoleResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsAdmin       bool                   `protobuf:"varint,1,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
+	Role          string                 `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *IsAdminResponse) Reset() {
-	*x = IsAdminResponse{}
+func (x *GetRoleResponse) Reset() {
+	*x = GetRoleResponse{}
 	mi := &file_sso_sso_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *IsAdminResponse) String() string {
+func (x *GetRoleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*IsAdminResponse) ProtoMessage() {}
+func (*GetRoleResponse) ProtoMessage() {}
 
-func (x *IsAdminResponse) ProtoReflect() protoreflect.Message {
+func (x *GetRoleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -322,16 +322,16 @@ func (x *IsAdminResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use IsAdminResponse.ProtoReflect.Descriptor instead.
-func (*IsAdminResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRoleResponse.ProtoReflect.Descriptor instead.
+func (*GetRoleResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *IsAdminResponse) GetIsAdmin() bool {
+func (x *GetRoleResponse) GetRole() string {
 	if x != nil {
-		return x.IsAdmin
+		return x.Role
 	}
-	return false
+	return ""
 }
 
 var File_sso_sso_proto protoreflect.FileDescriptor
@@ -353,15 +353,15 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x06app_id\x18\x03 \x01(\x05R\x05appId\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"?\n" +
-	"\x0eIsAdminRequest\x12\x14\n" +
+	"\x0eGetRoleRequest\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\",\n" +
-	"\x0fIsAdminResponse\x12\x19\n" +
-	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xf5\x01\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"%\n" +
+	"\x0fGetRoleResponse\x12\x12\n" +
+	"\x04role\x18\x01 \x01(\tR\x04role2\xf5\x01\n" +
 	"\x04Auth\x12T\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/registrate\x12F\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/login\x12O\n" +
-	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/is-adminB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\aGetRole\x12\x14.auth.GetRoleRequest\x1a\x15.auth.GetRoleResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/get-roleB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once
@@ -381,16 +381,16 @@ var file_sso_sso_proto_goTypes = []any{
 	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
 	(*LoginRequest)(nil),     // 2: auth.LoginRequest
 	(*LoginResponse)(nil),    // 3: auth.LoginResponse
-	(*IsAdminRequest)(nil),   // 4: auth.IsAdminRequest
-	(*IsAdminResponse)(nil),  // 5: auth.IsAdminResponse
+	(*GetRoleRequest)(nil),   // 4: auth.GetRoleRequest
+	(*GetRoleResponse)(nil),  // 5: auth.GetRoleResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
 	0, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
 	2, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
-	4, // 2: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
+	4, // 2: auth.Auth.GetRole:input_type -> auth.GetRoleRequest
 	1, // 3: auth.Auth.Register:output_type -> auth.RegisterResponse
 	3, // 4: auth.Auth.Login:output_type -> auth.LoginResponse
-	5, // 5: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
+	5, // 5: auth.Auth.GetRole:output_type -> auth.GetRoleResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

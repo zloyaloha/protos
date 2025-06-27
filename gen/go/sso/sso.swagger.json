@@ -16,14 +16,14 @@
     "application/json"
   ],
   "paths": {
-    "/v1/is-admin": {
+    "/v1/get-role": {
       "post": {
-        "operationId": "Auth_IsAdmin",
+        "operationId": "Auth_GetRole",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authIsAdminResponse"
+              "$ref": "#/definitions/authGetRoleResponse"
             }
           },
           "default": {
@@ -39,7 +39,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authIsAdminRequest"
+              "$ref": "#/definitions/authGetRoleRequest"
             }
           }
         ],
@@ -114,7 +114,7 @@
     }
   },
   "definitions": {
-    "authIsAdminRequest": {
+    "authGetRoleRequest": {
       "type": "object",
       "properties": {
         "token": {
@@ -125,11 +125,11 @@
         }
       }
     },
-    "authIsAdminResponse": {
+    "authGetRoleResponse": {
       "type": "object",
       "properties": {
-        "isAdmin": {
-          "type": "boolean"
+        "role": {
+          "type": "string"
         }
       }
     },
