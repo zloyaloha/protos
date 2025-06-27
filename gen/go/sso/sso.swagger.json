@@ -16,6 +16,37 @@
     "application/json"
   ],
   "paths": {
+    "/v1/is-admin": {
+      "get": {
+        "operationId": "Auth_IsAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authIsAdminResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
     "/v1/login": {
       "post": {
         "operationId": "Auth_Login",
@@ -82,6 +113,14 @@
     }
   },
   "definitions": {
+    "authIsAdminResponse": {
+      "type": "object",
+      "properties": {
+        "isAdmin": {
+          "type": "boolean"
+        }
+      }
+    },
     "authLoginRequest": {
       "type": "object",
       "properties": {
