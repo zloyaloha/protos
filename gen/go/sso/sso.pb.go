@@ -240,8 +240,7 @@ func (x *LoginResponse) GetToken() string {
 
 type GetRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -274,13 +273,6 @@ func (x *GetRoleRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetRoleRequest.ProtoReflect.Descriptor instead.
 func (*GetRoleRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetRoleRequest) GetToken() string {
-	if x != nil {
-		return x.Token
-	}
-	return ""
 }
 
 func (x *GetRoleRequest) GetUserId() string {
@@ -352,16 +344,15 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x15\n" +
 	"\x06app_id\x18\x03 \x01(\x05R\x05appId\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"?\n" +
-	"\x0eGetRoleRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"%\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\")\n" +
+	"\x0eGetRoleRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"%\n" +
 	"\x0fGetRoleResponse\x12\x12\n" +
-	"\x04role\x18\x01 \x01(\tR\x04role2\xf5\x01\n" +
+	"\x04role\x18\x01 \x01(\tR\x04role2\xfc\x01\n" +
 	"\x04Auth\x12T\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/registrate\x12F\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/login\x12O\n" +
-	"\aGetRole\x12\x14.auth.GetRoleRequest\x1a\x15.auth.GetRoleResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/get-roleB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/login\x12V\n" +
+	"\aGetRole\x12\x14.auth.GetRoleRequest\x1a\x15.auth.GetRoleResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v1/get-role/{user_id}B\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once

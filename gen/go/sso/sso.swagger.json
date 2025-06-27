@@ -16,8 +16,8 @@
     "application/json"
   ],
   "paths": {
-    "/v1/get-role": {
-      "post": {
+    "/v1/get-role/{userId}": {
+      "get": {
         "operationId": "Auth_GetRole",
         "responses": {
           "200": {
@@ -35,12 +35,10 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "userId",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/authGetRoleRequest"
-            }
+            "type": "string"
           }
         ],
         "tags": [
@@ -114,17 +112,6 @@
     }
   },
   "definitions": {
-    "authGetRoleRequest": {
-      "type": "object",
-      "properties": {
-        "token": {
-          "type": "string"
-        },
-        "userId": {
-          "type": "string"
-        }
-      }
-    },
     "authGetRoleResponse": {
       "type": "object",
       "properties": {

@@ -23,8 +23,7 @@ service Auth {
 
     rpc GetRole (GetRoleRequest) returns (GetRoleResponse) {
         option (google.api.http) = {
-            post: "/v1/get-role"
-            body: "*"
+            get: "/v1/get-role/{user_id}"
         };
     }
 }
@@ -51,8 +50,7 @@ message LoginResponse {
 }
 
 message GetRoleRequest {
-    string token = 1;
-    string user_id = 2;
+    string user_id = 1;
 }
 
 message GetRoleResponse {
