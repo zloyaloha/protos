@@ -17,7 +17,7 @@
   ],
   "paths": {
     "/v1/is-admin": {
-      "get": {
+      "post": {
         "operationId": "Auth_IsAdmin",
         "responses": {
           "200": {
@@ -35,10 +35,12 @@
         },
         "parameters": [
           {
-            "name": "token",
-            "in": "query",
-            "required": false,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authIsAdminRequest"
+            }
           }
         ],
         "tags": [
@@ -112,6 +114,17 @@
     }
   },
   "definitions": {
+    "authIsAdminRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
     "authIsAdminResponse": {
       "type": "object",
       "properties": {

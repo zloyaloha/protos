@@ -23,7 +23,8 @@ service Auth {
 
     rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse) {
         option (google.api.http) = {
-            get: "/v1/is-admin"
+            post: "/v1/is-admin"
+            body: "*"
         };
     }
 }
@@ -51,6 +52,7 @@ message LoginResponse {
 
 message IsAdminRequest {
     string token = 1;
+    string user_id = 2;
 }
 
 message IsAdminResponse {
