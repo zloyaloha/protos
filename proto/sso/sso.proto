@@ -50,7 +50,7 @@ message LoginResponse {
 }
 
 message IsAdminRequest {
-    int64 user_id = 1;
+    string token = 1;
 }
 
 message IsAdminResponse {

@@ -35,11 +35,10 @@
         },
         "parameters": [
           {
-            "name": "userId",
+            "name": "token",
             "in": "query",
             "required": false,
-            "type": "string",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "tags": [
