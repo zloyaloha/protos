@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package tickets;
+
+option go_package = "tickets.v1;ticketsv1";
+
+import "google/api/annotations.proto";
+
+service Tickets {
+    rpc BuyTicket (BuyTicketRequest) returns (BuyTicketResponse) {
+        option (google.api.http) = {
+            post: "/tickets/booking"
+            body: "*"
+        };
+    }
+}
+
+message BuyTicketRequest {
+    string game_id = 1;
+    string seats = 2;
+}
+
+message BuyTicketResponse {
+    int64 ticket_id = 1;
+}

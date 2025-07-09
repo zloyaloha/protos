@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "tickets/tickets.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Tickets"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/tickets/booking": {
+      "post": {
+        "operationId": "Tickets_BuyTicket",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ticketsBuyTicketResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ticketsBuyTicketRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Tickets"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "ticketsBuyTicketRequest": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string"
+        },
+        "seats": {
+          "type": "string"
+        }
+      }
+    },
+    "ticketsBuyTicketResponse": {
+      "type": "object",
+      "properties": {
+        "ticketId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
