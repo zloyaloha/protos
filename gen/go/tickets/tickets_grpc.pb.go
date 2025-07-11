@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Tickets_BuyTicket_FullMethodName = "/tickets.Tickets/BuyTicket"
+	Tickets_GetPlaces_FullMethodName = "/tickets.Tickets/GetPlaces"
 )
 
 // TicketsClient is the client API for Tickets service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TicketsClient interface {
 	BuyTicket(ctx context.Context, in *BuyTicketRequest, opts ...grpc.CallOption) (*BuyTicketResponse, error)
+	GetPlaces(ctx context.Context, in *GetPlacesRequest, opts ...grpc.CallOption) (*GetPlacesResponse, error)
 }
 
 type ticketsClient struct {
@@ -47,11 +49,22 @@ func (c *ticketsClient) BuyTicket(ctx context.Context, in *BuyTicketRequest, opt
 	return out, nil
 }
 
+func (c *ticketsClient) GetPlaces(ctx context.Context, in *GetPlacesRequest, opts ...grpc.CallOption) (*GetPlacesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPlacesResponse)
+	err := c.cc.Invoke(ctx, Tickets_GetPlaces_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TicketsServer is the server API for Tickets service.
 // All implementations must embed UnimplementedTicketsServer
 // for forward compatibility.
 type TicketsServer interface {
 	BuyTicket(context.Context, *BuyTicketRequest) (*BuyTicketResponse, error)
+	GetPlaces(context.Context, *GetPlacesRequest) (*GetPlacesResponse, error)
 	mustEmbedUnimplementedTicketsServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedTicketsServer struct{}
 
 func (UnimplementedTicketsServer) BuyTicket(context.Context, *BuyTicketRequest) (*BuyTicketResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuyTicket not implemented")
+}
+func (UnimplementedTicketsServer) GetPlaces(context.Context, *GetPlacesRequest) (*GetPlacesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlaces not implemented")
 }
 func (UnimplementedTicketsServer) mustEmbedUnimplementedTicketsServer() {}
 func (UnimplementedTicketsServer) testEmbeddedByValue()                 {}
@@ -104,6 +120,24 @@ func _Tickets_BuyTicket_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tickets_GetPlaces_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlacesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TicketsServer).GetPlaces(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Tickets_GetPlaces_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TicketsServer).GetPlaces(ctx, req.(*GetPlacesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tickets_ServiceDesc is the grpc.ServiceDesc for Tickets service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var Tickets_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BuyTicket",
 			Handler:    _Tickets_BuyTicket_Handler,
+		},
+		{
+			MethodName: "GetPlaces",
+			Handler:    _Tickets_GetPlaces_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

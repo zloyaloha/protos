@@ -13,6 +13,11 @@ service Tickets {
             body: "*"
         };
     }
+    rpc GetPlaces (GetPlacesRequest) returns (GetPlacesResponse) {
+        option (google.api.http) = {
+            get: "/tickets/places/gameId=$1/sectorId=$2"
+        };
+    }
 }
 
 message BuyTicketRequest {
@@ -22,4 +27,29 @@ message BuyTicketRequest {
 
 message BuyTicketResponse {
     int64 ticket_id = 1;
+}
+
+message Sector {
+    int32 id = 1;
+    repeated Row rows = 2;
+}
+
+message Row {
+    int32 id = 1;
+    repeated Place places = 2;
+}
+
+message Place {
+    int32 id = 1;
+    int32 cost = 2;
+    bool is_empty = 3;
+}
+
+message GetPlacesRequest {
+    int32 gameId = 1;
+    int32 sectorId = 2;
+}
+
+message GetPlacesResponse {
+    Sector sector = 1;
 }

@@ -118,6 +118,266 @@ func (x *BuyTicketResponse) GetTicketId() int64 {
 	return 0
 }
 
+type Sector struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Rows          []*Row                 `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Sector) Reset() {
+	*x = Sector{}
+	mi := &file_tickets_tickets_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Sector) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Sector) ProtoMessage() {}
+
+func (x *Sector) ProtoReflect() protoreflect.Message {
+	mi := &file_tickets_tickets_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Sector.ProtoReflect.Descriptor instead.
+func (*Sector) Descriptor() ([]byte, []int) {
+	return file_tickets_tickets_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Sector) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Sector) GetRows() []*Row {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+type Row struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Places        []*Place               `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Row) Reset() {
+	*x = Row{}
+	mi := &file_tickets_tickets_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Row) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Row) ProtoMessage() {}
+
+func (x *Row) ProtoReflect() protoreflect.Message {
+	mi := &file_tickets_tickets_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Row.ProtoReflect.Descriptor instead.
+func (*Row) Descriptor() ([]byte, []int) {
+	return file_tickets_tickets_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Row) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Row) GetPlaces() []*Place {
+	if x != nil {
+		return x.Places
+	}
+	return nil
+}
+
+type Place struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Cost          int32                  `protobuf:"varint,2,opt,name=cost,proto3" json:"cost,omitempty"`
+	IsEmpty       bool                   `protobuf:"varint,3,opt,name=is_empty,json=isEmpty,proto3" json:"is_empty,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Place) Reset() {
+	*x = Place{}
+	mi := &file_tickets_tickets_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Place) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Place) ProtoMessage() {}
+
+func (x *Place) ProtoReflect() protoreflect.Message {
+	mi := &file_tickets_tickets_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Place.ProtoReflect.Descriptor instead.
+func (*Place) Descriptor() ([]byte, []int) {
+	return file_tickets_tickets_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Place) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Place) GetCost() int32 {
+	if x != nil {
+		return x.Cost
+	}
+	return 0
+}
+
+func (x *Place) GetIsEmpty() bool {
+	if x != nil {
+		return x.IsEmpty
+	}
+	return false
+}
+
+type GetPlacesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GameId        int32                  `protobuf:"varint,1,opt,name=gameId,proto3" json:"gameId,omitempty"`
+	SectorId      int32                  `protobuf:"varint,2,opt,name=sectorId,proto3" json:"sectorId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPlacesRequest) Reset() {
+	*x = GetPlacesRequest{}
+	mi := &file_tickets_tickets_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPlacesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPlacesRequest) ProtoMessage() {}
+
+func (x *GetPlacesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tickets_tickets_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPlacesRequest.ProtoReflect.Descriptor instead.
+func (*GetPlacesRequest) Descriptor() ([]byte, []int) {
+	return file_tickets_tickets_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetPlacesRequest) GetGameId() int32 {
+	if x != nil {
+		return x.GameId
+	}
+	return 0
+}
+
+func (x *GetPlacesRequest) GetSectorId() int32 {
+	if x != nil {
+		return x.SectorId
+	}
+	return 0
+}
+
+type GetPlacesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Sector        *Sector                `protobuf:"bytes,1,opt,name=sector,proto3" json:"sector,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPlacesResponse) Reset() {
+	*x = GetPlacesResponse{}
+	mi := &file_tickets_tickets_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPlacesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPlacesResponse) ProtoMessage() {}
+
+func (x *GetPlacesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tickets_tickets_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPlacesResponse.ProtoReflect.Descriptor instead.
+func (*GetPlacesResponse) Descriptor() ([]byte, []int) {
+	return file_tickets_tickets_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetPlacesResponse) GetSector() *Sector {
+	if x != nil {
+		return x.Sector
+	}
+	return nil
+}
+
 var File_tickets_tickets_proto protoreflect.FileDescriptor
 
 const file_tickets_tickets_proto_rawDesc = "" +
@@ -127,9 +387,25 @@ const file_tickets_tickets_proto_rawDesc = "" +
 	"\agame_id\x18\x01 \x01(\tR\x06gameId\x12\x14\n" +
 	"\x05seats\x18\x02 \x01(\tR\x05seats\"0\n" +
 	"\x11BuyTicketResponse\x12\x1b\n" +
-	"\tticket_id\x18\x01 \x01(\x03R\bticketId2j\n" +
+	"\tticket_id\x18\x01 \x01(\x03R\bticketId\":\n" +
+	"\x06Sector\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12 \n" +
+	"\x04rows\x18\x02 \x03(\v2\f.tickets.RowR\x04rows\"=\n" +
+	"\x03Row\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12&\n" +
+	"\x06places\x18\x02 \x03(\v2\x0e.tickets.PlaceR\x06places\"F\n" +
+	"\x05Place\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x04cost\x18\x02 \x01(\x05R\x04cost\x12\x19\n" +
+	"\bis_empty\x18\x03 \x01(\bR\aisEmpty\"F\n" +
+	"\x10GetPlacesRequest\x12\x16\n" +
+	"\x06gameId\x18\x01 \x01(\x05R\x06gameId\x12\x1a\n" +
+	"\bsectorId\x18\x02 \x01(\x05R\bsectorId\"<\n" +
+	"\x11GetPlacesResponse\x12'\n" +
+	"\x06sector\x18\x01 \x01(\v2\x0f.tickets.SectorR\x06sector2\xdd\x01\n" +
 	"\aTickets\x12_\n" +
-	"\tBuyTicket\x12\x19.tickets.BuyTicketRequest\x1a\x1a.tickets.BuyTicketResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/tickets/bookingB\x16Z\x14tickets.v1;ticketsv1b\x06proto3"
+	"\tBuyTicket\x12\x19.tickets.BuyTicketRequest\x1a\x1a.tickets.BuyTicketResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/tickets/booking\x12q\n" +
+	"\tGetPlaces\x12\x19.tickets.GetPlacesRequest\x1a\x1a.tickets.GetPlacesResponse\"-\x82\xd3\xe4\x93\x02'\x12%/tickets/places/gameId=$1/sectorId=$2B\x16Z\x14tickets.v1;ticketsv1b\x06proto3"
 
 var (
 	file_tickets_tickets_proto_rawDescOnce sync.Once
@@ -143,19 +419,29 @@ func file_tickets_tickets_proto_rawDescGZIP() []byte {
 	return file_tickets_tickets_proto_rawDescData
 }
 
-var file_tickets_tickets_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_tickets_tickets_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_tickets_tickets_proto_goTypes = []any{
 	(*BuyTicketRequest)(nil),  // 0: tickets.BuyTicketRequest
 	(*BuyTicketResponse)(nil), // 1: tickets.BuyTicketResponse
+	(*Sector)(nil),            // 2: tickets.Sector
+	(*Row)(nil),               // 3: tickets.Row
+	(*Place)(nil),             // 4: tickets.Place
+	(*GetPlacesRequest)(nil),  // 5: tickets.GetPlacesRequest
+	(*GetPlacesResponse)(nil), // 6: tickets.GetPlacesResponse
 }
 var file_tickets_tickets_proto_depIdxs = []int32{
-	0, // 0: tickets.Tickets.BuyTicket:input_type -> tickets.BuyTicketRequest
-	1, // 1: tickets.Tickets.BuyTicket:output_type -> tickets.BuyTicketResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	3, // 0: tickets.Sector.rows:type_name -> tickets.Row
+	4, // 1: tickets.Row.places:type_name -> tickets.Place
+	2, // 2: tickets.GetPlacesResponse.sector:type_name -> tickets.Sector
+	0, // 3: tickets.Tickets.BuyTicket:input_type -> tickets.BuyTicketRequest
+	5, // 4: tickets.Tickets.GetPlaces:input_type -> tickets.GetPlacesRequest
+	1, // 5: tickets.Tickets.BuyTicket:output_type -> tickets.BuyTicketResponse
+	6, // 6: tickets.Tickets.GetPlaces:output_type -> tickets.GetPlacesResponse
+	5, // [5:7] is the sub-list for method output_type
+	3, // [3:5] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_tickets_tickets_proto_init() }
@@ -169,7 +455,7 @@ func file_tickets_tickets_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tickets_tickets_proto_rawDesc), len(file_tickets_tickets_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

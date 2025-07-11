@@ -47,6 +47,44 @@
           "Tickets"
         ]
       }
+    },
+    "/tickets/places/gameId=$1/sectorId=$2": {
+      "get": {
+        "operationId": "Tickets_GetPlaces",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ticketsGetPlacesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sectorId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Tickets"
+        ]
+      }
     }
   },
   "definitions": {
@@ -95,6 +133,62 @@
         "ticketId": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "ticketsGetPlacesResponse": {
+      "type": "object",
+      "properties": {
+        "sector": {
+          "$ref": "#/definitions/ticketsSector"
+        }
+      }
+    },
+    "ticketsPlace": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cost": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isEmpty": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ticketsRow": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "places": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ticketsPlace"
+          }
+        }
+      }
+    },
+    "ticketsSector": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ticketsRow"
+          }
         }
       }
     }
